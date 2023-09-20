@@ -36,11 +36,17 @@
         function onMapClick(e) {
             popup
                 .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
+                .setContent("Koordinat lintang bujur =  " + e.latlng.toString())
                 .openOn(map);
         }
 
         map.on('click', onMapClick);
+        var bikelanes = L.tileLayer('http://tiles.mapc.org/trailmap-onroad/{z}/{x}/{y}.png',
+        {
+        maxZoom: 17,
+        minZoom: 9
+        }).addTo(map); 
+
     </script>
 </body>
 </html>
