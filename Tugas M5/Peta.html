@@ -59,48 +59,56 @@
         center: [-7.79558, 110.36949],         
         zoom: 12 
         });
-    var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
-    var esri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	var esri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 	}).addTo(map);
 	
-    var carto = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}{r}.png', {
+	var carto = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}{r}.png', {
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
 	subdomains: 'abcd',
 	maxZoom: 19
-	});    
-        
-        var gunkid = L.marker([-7.773247002978248, 110.35423278808594]).bindPopup('gunkid'),
-            sleman = L.marker([-7.768144452028461, 110.40470123291016]).bindPopup('sleman'),
-            kupro = L.marker([-7.813044768423498, 110.37242889404297]).bindPopup('kupro'),
-            mbantul = L.marker([-7.7994391205004225, 110.33020019531249]).bindPopup('mbntl');
-        
-        var jogja = L.layerGroup([gunkid, kupro, mbantul, sleman]);
-        L.control.layers(baseMaps, overlayMaps).addTo(map); 
-        var overlayMaps = {"Jogja": jogja };
+	});
+
+    var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution :'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);    
 	
-	var geodesi = L.layerGroup([geodesi]);
-	    
-        var overlayMaps = {"Geodesi": geodesi };
-        var graphicScale = L.control.graphicScale({
-		fill: "fill",
-		doubleLine: "true",
-		showSubunits: "true"
-	}).addTo(map);
+	
+	var gunkid = L.marker([-7.773247002978248, 110.35423278808594]).bindPopup('jjg'),
+		sleman    = L.marker([-7.768144452028461, 110.40470123291016]).bindPopup('jgjh'),
+		kupro    = L.marker([-7.813044768423498, 110.37242889404297]).bindPopup('jygv'),
+		mbantul    = L.marker([-7.7994391205004225, 110.33020019531249]).bindPopup('ybv');
+	
+	var jogja = L.layerGroup([gunkid, kupro, mbantul, sleman]);
+	
+	
 	var baseMaps = {
-        "OSM" : osm,
-	"ESRI" : esri,
-	"Carto" : carto
+		"Citra Satelit": esri,
+		"Peta Carto": carto,
+        "OSM" : osm
 	};
 	
 	var overlayMaps = {
 		"Jogja": jogja
 	};
 	
-	L.control.layers(baseMaps, overlayMaps, geodesi).addTo(map);
+	L.control.layers(baseMaps, overlayMaps).addTo(map);
 	
 	
 	L.Control.geocoder().addTo(map);
+	
+	L.easyPrint({
+		title: 'My awesome print button',
+		position: 'topright',
+		sizeModes: ['A4Portrait', 'A4Landscape']
+	}).addTo(map);
+	
+	
+	var graphicScale = L.control.graphicScale({
+		fill: "fill",
+		doubleLine: "true",
+		showSubunits: "true"
+	}).addTo(map);
 	function cari(){
 		alert('Harap nyalakan GPS!');
 		map.locate({setView: true, maxZoom: 16});
