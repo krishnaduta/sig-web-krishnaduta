@@ -60,7 +60,15 @@
         zoom: 12 
         });
     var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
-        
+    var esri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+	}).addTo(map);
+	
+    var carto = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+	subdomains: 'abcd',
+	maxZoom: 19
+	});    
         
 
 
@@ -75,7 +83,7 @@
         var overlayMaps = {"Jogja": jogja };
 	
 	var geodesi = L.layerGroup([geodesi]);
-        L.control.layers(baseMaps, overlayMaps).addTo(map); 
+	    
         var overlayMaps = {"Geodesi": geodesi };
         var graphicScale = L.control.graphicScale({
 		fill: "fill",
@@ -83,14 +91,16 @@
 		showSubunits: "true"
 	}).addTo(map);
 	var baseMaps = {
-        "OSM" : osm
+        "OSM" : osm,
+	"ESRI" : esri,
+	"Carto" : carto
 	};
 	
 	var overlayMaps = {
 		"Jogja": jogja
 	};
 	
-	L.control.layers(baseMaps, overlayMaps).addTo(map);
+	L.control.layers(baseMaps, overlayMaps, geodesi).addTo(map);
 	
 	
 	L.Control.geocoder().addTo(map);
