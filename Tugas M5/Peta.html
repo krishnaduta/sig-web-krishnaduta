@@ -60,19 +60,23 @@
         zoom: 12 
         });
     var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
-        var marker = L.marker([-7.763813, 110.372734]).bindPopup('Teknik Geodesi UGM').addTo(map);
+        
         
 
 
         var gunkid = L.marker([-7.773247002978248, 110.35423278808594]).bindPopup('gunkid'),
             sleman = L.marker([-7.768144452028461, 110.40470123291016]).bindPopup('sleman'),
             kupro = L.marker([-7.813044768423498, 110.37242889404297]).bindPopup('kupro'),
-            mbantul = L.marker([-7.7994391205004225, 110.33020019531249]).bindPopup('mbntl'); 
+            mbantul = L.marker([-7.7994391205004225, 110.33020019531249]).bindPopup('mbntl'),
+	    geodesi = L.marker([-7.763813, 110.372734]).bindPopup('Teknik Geodesi UGM');
         
         var jogja = L.layerGroup([gunkid, kupro, mbantul, sleman]);
         L.control.layers(baseMaps, overlayMaps).addTo(map); 
         var overlayMaps = {"Jogja": jogja };
-
+	
+	var geodesi = L.layerGroup([geodesi]);
+        L.control.layers(baseMaps, overlayMaps).addTo(map); 
+        var overlayMaps = {"Geodesi": geodesi };
         var graphicScale = L.control.graphicScale({
 		fill: "fill",
 		doubleLine: "true",
