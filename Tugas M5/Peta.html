@@ -74,12 +74,13 @@
     }).addTo(map);    
 	
 	
-	var gunkid = L.marker([-7.773247002978248, 110.35423278808594]).bindPopup('jjg'),
-		sleman    = L.marker([-7.768144452028461, 110.40470123291016]).bindPopup('jgjh'),
-		kupro    = L.marker([-7.813044768423498, 110.37242889404297]).bindPopup('jygv'),
-		mbantul    = L.marker([-7.7994391205004225, 110.33020019531249]).bindPopup('ybv');
+	var geodesi = L.marker([-7.763883082570722, 110.37257246480183]).bindPopup('<div><img src="foto/geodesi.jpeg" alt="Nature" class="responsive" width="800" height="600"> <p>Teknik Geodesi UGM</p> <a href="https://maps.app.goo.gl/5tXbGdFb7xUaSphY7">Link Maps Teknik Geodesi UGM</a></div>'),
+		gsp    = L.marker([-7.769903233035359, 110.37784425514221]).bindPopup('<div><img src="foto/gsp.jpg" alt="Nature" class="responsive" width="800" height="600"> <p>Grha Sabha Pramana UGM</p> <a href="https://maps.app.goo.gl/bffU9z3Vm3ihpKzB9/">Link Maps Grha Sabha Pramana UGM</a></div>')
+		wisdom    = L.marker([-7.7701591968736174, 110.38218583310007]).bindPopup('<div><img src="foto/wisdompark.jpeg" alt="Nature" class="responsive" width="800" height="600"> <p> Wisdom Park UGM</p> <a href="https://maps.app.goo.gl/jmTH1JUawVSvkUZm8">Link Maps Wisdom Park UGM</a></div>')
+    pancas    = L.marker([-7.769125657627492, 110.3847185485736]).bindPopup('<div><img src="foto/stadionpancas.jpeg" alt="Nature" class="responsive" width="800" height="600"> <p>Stadion Pancasila UGM</p> <a href="https://maps.app.goo.gl/vx32DhbDoZMgCvBx5">Link Maps Stadion Pancasila UGM</a></div>')
+		sglc    = L.marker([-7.7654475751859735, 110.3722997567345]).bindPopup('<div><img src="foto/sglc.jpg" alt="Nature" class="responsive" width="800" height="600"> <p>Smart Green Learning Centre FT UGM</p> <a href="https://maps.app.goo.gl/2gC28NypjC1eCWeu7">Link Maps Smart Green Learning Centre FT UGM/a></div>')
 	
-	var jogja = L.layerGroup([gunkid, kupro, mbantul, sleman]);
+	var tempatfavorite = L.layerGroup([geodesi, gsp, wisdom, pancas, sglc]);
 	
 	
 	var baseMaps = {
@@ -89,7 +90,7 @@
 	};
 	
 	var overlayMaps = {
-		"Jogja": jogja
+		"Tempat Favorite": tempatfavorite
 	};
 	
 	L.control.layers(baseMaps, overlayMaps).addTo(map);
